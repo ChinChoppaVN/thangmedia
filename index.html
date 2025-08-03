@@ -17,6 +17,15 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- Custom CSS to hide loading -->
+        <style>
+            .sl-loading {
+                display: none !important;
+            }
+            .sl-overlay {
+                display: none !important;
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -104,7 +113,7 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Video quảng cáo sản phẩm">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Video quảng cáo sản phẩm'); return false;" title="Video quảng cáo sản phẩm">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="Video quảng cáo sản phẩm" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Quay phim</div>
@@ -116,7 +125,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Chụp ảnh sản phẩm">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Chụp ảnh sản phẩm'); return false;" title="Chụp ảnh sản phẩm">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="Chụp ảnh sản phẩm" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Chụp ảnh</div>
@@ -128,7 +137,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Logo và Branding">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Logo và Branding'); return false;" title="Logo và Branding">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="Logo và Branding" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Thiết kế</div>
@@ -140,7 +149,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Corporate Video">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Corporate Video'); return false;" title="Corporate Video">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="Corporate Video" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Video</div>
@@ -152,7 +161,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Quay phim sự kiện">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Quay phim sự kiện'); return false;" title="Quay phim sự kiện">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="Quay phim sự kiện" />
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Sự kiện</div>
@@ -164,7 +173,7 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" title="Digital Content">
+                        <a class="portfolio-box" href="#" onclick="openVideoModal('https://www.youtube.com/embed/hoMCUHQQ4dI?si=NW90xzEfHJXfFPGY', 'Digital Content'); return false;" title="Digital Content">
                             <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="Digital Content" />
                             <div class="portfolio-box-caption p-3">
                                 <div class="project-category text-white-50">Marketing</div>
@@ -178,6 +187,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Video Modal -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="videoModalLabel">Video</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="videoIframe" src="" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Call to action-->
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
@@ -280,6 +307,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- Video Modal JavaScript -->
+        <script>
+            function openVideoModal(videoUrl, title) {
+                document.getElementById('videoIframe').src = videoUrl;
+                document.getElementById('videoModalLabel').textContent = title;
+                var modal = new bootstrap.Modal(document.getElementById('videoModal'));
+                modal.show();
+            }
+            
+            // Clear iframe src when modal is hidden to stop video
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('videoIframe').src = '';
+            });
+        </script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
