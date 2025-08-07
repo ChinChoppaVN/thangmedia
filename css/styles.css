@@ -595,7 +595,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: "— ";
 }
 
 .img-fluid {
@@ -796,11 +796,9 @@ progress {
 .offset-2 {
   margin-left: 16.66666667%;
 }
-
 .offset-3 {
   margin-left: 25%;
 }
-
 .offset-4 {
   margin-left: 33.33333333%;
 }
@@ -3167,7 +3165,6 @@ textarea.form-control-lg {
 .collapse:not(.show) {
   display: none;
 }
-
 .collapsing {
   height: 0;
   overflow: hidden;
@@ -4749,7 +4746,6 @@ textarea.form-control-lg {
   background-color: var(--bs-progress-bg);
   border-radius: var(--bs-progress-border-radius);
 }
-
 .progress-bar {
   display: flex;
   flex-direction: column;
@@ -7111,7 +7107,6 @@ textarea.form-control-lg {
 .end-0 {
   right: 0 !important;
 }
-
 .end-50 {
   right: 50% !important;
 }
@@ -7910,11 +7905,9 @@ textarea.form-control-lg {
 .font-monospace {
   font-family: var(--bs-font-monospace) !important;
 }
-
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
-
 .fs-2 {
   font-size: calc(1.325rem + 0.9vw) !important;
 }
@@ -8299,6 +8292,24 @@ textarea.form-control-lg {
   visibility: hidden !important;
 }
 
+.software-icon {
+  height: 60px;
+  width: auto;
+  margin: 0 10px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #fff;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+.software-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.software-icons {
+  gap: 24px;
+}
 @media (min-width: 576px) {
   .float-sm-start {
     float: left !important;
