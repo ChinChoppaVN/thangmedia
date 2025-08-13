@@ -8313,6 +8313,20 @@ textarea.form-control-lg {
 .software-icons {
   gap: 24px;
 }
+
+/* Tăng chiều cao video trong modal để chừa chỗ cho thanh điều khiển YouTube */
+.video-modal { 
+  --bs-aspect-ratio: 66% !important; /* tăng từ 62% lên 66% */
+}
+
+@media (max-width: 576px) {
+  .video-modal {
+    --bs-aspect-ratio: 72% !important; /* màn nhỏ cần cao hơn */
+  }
+}
+
+/* Loại bỏ padding để video cao tối đa trong modal */
+.modal-body { padding: 0; }
 @media (min-width: 576px) {
   .float-sm-start {
     float: left !important;
