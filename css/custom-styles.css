@@ -1,0 +1,173 @@
+/* Custom Styles for Thắng Media - Optimized Version */
+
+/* Root Variables */
+:root {
+  --primary-color: #f4623a;
+  --secondary-color: #6c757d;
+  --white: #fff;
+  --dark: #212529;
+  --light-gray: #f8f9fa;
+  --text-muted: #6c757d;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Merriweather', serif;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+  transition: all 0.3s ease;
+}
+
+.navbar-shrink {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Masthead */
+.masthead {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/img/bg-masthead.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Dividers */
+.divider {
+  height: 0.25rem;
+  max-width: 3.25rem;
+  background-color: var(--primary-color);
+  margin: 1.5rem auto;
+}
+
+.divider-light {
+  background-color: var(--white);
+}
+
+/* Portfolio */
+.portfolio-box {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.portfolio-box:hover {
+  transform: scale(1.02);
+}
+
+.portfolio-box-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgba(244, 98, 58, 0.95), rgba(229, 90, 43, 0.95));
+  color: white;
+  padding: 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+  transform: translateY(0);
+}
+
+/* Software Icons */
+.software-icons {
+  gap: 1rem;
+}
+
+.software-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.software-icon:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%) brightness(1.1);
+  box-shadow: 0 4px 12px rgba(244, 98, 58, 0.3);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn-light:hover {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+  background-color: #e55a2b;
+  border-color: #e55a2b;
+  transform: translateY(-2px);
+}
+
+/* Modal Optimizations */
+.modal-xl {
+  max-width: 90vw;
+}
+
+.video-modal {
+  background: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .masthead h1 {
+    font-size: 2.5rem;
+  }
+  
+  .software-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .portfolio-box-caption {
+    padding: 1rem;
+  }
+}
+
+/* Loading States */
+.loading-hidden {
+  display: none !important;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimizations */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
