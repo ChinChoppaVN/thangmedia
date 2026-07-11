@@ -50,13 +50,15 @@ const videoModal = {
     init() {
         this.modal = document.getElementById('videoModal');
         this.iframe = document.getElementById('videoIframe');
+        this.scrollY = 0;
+        if (!this.modal || !this.iframe) return;
         this.bindEvents();
     },
     
     bindEvents() {
         // Close modal on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.modal.classList.contains('show')) {
+            if (e.key === 'Escape' && this.modal && this.modal.classList.contains('show')) {
                 this.close();
             }
         });
@@ -68,18 +70,19 @@ const videoModal = {
     },
     
     open(videoUrl, title) {
-        // Store scroll position
-        this.scrollY = window.scrollY;
+        if (!this.modal || !this.iframe) return;
+        this.scrollY = window.scrollY || window.pageYOffset || 0;
         
-        // Set modal content
         this.iframe.src = videoUrl;
         document.getElementById('videoModalLabel').textContent = title;
         
-        // Show modal
-        const modal = new bootstrap.Modal(this.modal);
+        const modal = bootstrap.Modal.getOrCreateInstance(this.modal, {
+            backdrop: true,
+            keyboard: true,
+            focus: false
+        });
         modal.show();
         
-        // Lock body scroll
         this.lockScroll();
     },
     
@@ -89,20 +92,30 @@ const videoModal = {
     },
     
     lockScroll() {
+        if (!Number.isFinite(this.scrollY)) this.scrollY = 0;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${this.scrollY}px`;
         document.body.style.width = '100%';
     },
     
     unlockScroll() {
+        const topStr = document.body.style.top || '';
+        const parsedTop = parseInt(topStr, 10);
+        const restoreY = Number.isFinite(parsedTop) ? Math.abs(parsedTop) : (Number.isFinite(this.scrollY) ? this.scrollY : 0);
+
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
-        window.scrollTo(0, this.scrollY);
+
+        const htmlEl = document.documentElement;
+        const prevBehavior = htmlEl.style.scrollBehavior;
+        htmlEl.style.scrollBehavior = 'auto';
+        window.scrollTo(0, restoreY);
+        htmlEl.style.scrollBehavior = prevBehavior || '';
     },
     
     cleanup() {
-        this.iframe.src = '';
+        if (this.iframe) this.iframe.src = '';
         this.unlockScroll();
     }
 };
@@ -125,6 +138,17 @@ const smoothScroll = () => {
     });
 };
 
+// Bootstrap ScrollSpy
+const initScrollSpy = () => {
+    const mainNav = document.querySelector('#mainNav');
+    if (mainNav) {
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#mainNav',
+            rootMargin: '0px 0px -40%',
+        });
+    }
+};
+
 // Add fade-in animations
 const addFadeAnimations = () => {
     const elements = document.querySelectorAll('.portfolio-box, .software-icon, .btn');
@@ -140,35 +164,15 @@ const addFadeAnimations = () => {
     elements.forEach(el => observer.observe(el));
 };
 
-// Performance monitoring
-const performanceMonitor = {
-    init() {
-        if ('performance' in window) {
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    const perfData = performance.getEntriesByType('navigation')[0];
-                    console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
-                }, 0);
-            });
-        }
-    }
-};
-
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize video modal
+    navbarShrink();
+    initScrollSpy();
+
     videoModal.init();
-    
-    // Add smooth scrolling
     smoothScroll();
-    
-    // Add fade animations
     addFadeAnimations();
-    
-    // Initialize performance monitoring
-    performanceMonitor.init();
-    
-    // Bind scroll events with optimization
+
     window.addEventListener('scroll', optimizedScroll());
     
     // Initialize lazy loading

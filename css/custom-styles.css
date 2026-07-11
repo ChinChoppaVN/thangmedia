@@ -77,6 +77,30 @@ body {
   transform: translateY(0);
 }
 
+#portfolio .container-fluid,
+#design-portfolio .container-fluid {
+  max-width: 1920px;
+}
+
+#portfolio .container-fluid .portfolio-box,
+#design-portfolio .container-fluid .portfolio-box {
+  aspect-ratio: 16 / 9;
+}
+
+#portfolio .container-fluid .portfolio-box img,
+#design-portfolio .container-fluid .portfolio-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portfolio-box-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #e9ecef;
+}
+
 /* Software Icons */
 .software-icons {
   gap: 1rem;
@@ -115,13 +139,27 @@ body {
   transform: translateY(-2px);
 }
 
-/* Modal Optimizations */
+/* Modal */
+.modal {
+  z-index: 9999 !important;
+}
+
+.modal-dialog {
+  margin-top: 0 !important;
+}
+
 .modal-xl {
-  max-width: 90vw;
+  max-width: 66vw;
 }
 
 .video-modal {
   background: #000;
+}
+
+@media (max-width: 992px) {
+  .modal-xl {
+    max-width: 92vw;
+  }
 }
 
 /* Responsive Design */
