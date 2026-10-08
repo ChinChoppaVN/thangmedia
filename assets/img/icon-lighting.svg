@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="lightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2e35"/>
+      <stop offset="100%" stop-color="#15181c"/>
+    </linearGradient>
+    <linearGradient id="bulbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#f4623a"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="64" height="64" rx="14" fill="url(#lightGrad)" stroke="#3a4049" stroke-width="1.5"/>
+
+  <!-- Light Reflector / Chóa đèn Bowens Mount -->
+  <path d="M16 19l14 8v10l-14 8c-2 1-4 0-4-2V21c0-2 2-3 4-2z" fill="#242930" stroke="#4b5563" stroke-width="1.2"/>
+  
+  <!-- Light Body Housing -->
+  <rect x="29" y="24" width="16" height="16" rx="3" fill="#1b1f24" stroke="#606a78" stroke-width="1.2"/>
+  <rect x="42" y="27" width="5" height="10" rx="1.5" fill="#111418" stroke="#374151" stroke-width="1"/>
+  <!-- Cooling Vents -->
+  <line x1="33" y1="28" x2="39" y2="28" stroke="#4b5563" stroke-width="1"/>
+  <line x1="33" y1="32" x2="39" y2="32" stroke="#4b5563" stroke-width="1"/>
+  <line x1="33" y1="36" x2="39" y2="36" stroke="#4b5563" stroke-width="1"/>
+
+  <!-- Light Stand Mounting Bracket & Yoke -->
+  <path d="M37 40v9h-2v4h4v-4h-2" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="37" cy="40" r="2" fill="#f4623a"/>
+
+  <!-- Light Emission Rays (Front Left Beam) -->
+  <path d="M12 21L5 17" stroke="url(#bulbGlow)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11 27L4 26" stroke="url(#bulbGlow)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11 34L4 35" stroke="url(#bulbGlow)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 41L5 45" stroke="url(#bulbGlow)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- COB LED Center Glow -->
+  <circle cx="21" cy="32" r="5" fill="url(#bulbGlow)"/>
+  <circle cx="21" cy="32" r="2.5" fill="#fffef0"/>
+</svg>

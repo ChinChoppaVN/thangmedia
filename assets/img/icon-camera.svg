@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="camGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2e35"/>
+      <stop offset="100%" stop-color="#15181c"/>
+    </linearGradient>
+    <linearGradient id="lensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d444d"/>
+      <stop offset="100%" stop-color="#1e2227"/>
+    </linearGradient>
+    <linearGradient id="accentOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a59"/>
+      <stop offset="100%" stop-color="#f4623a"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="64" height="64" rx="14" fill="url(#camGrad)" stroke="#3a4049" stroke-width="1.5"/>
+  <!-- Top Viewfinder / Hotshoe -->
+  <path d="M22 17h12l2 4h-16l2-4z" fill="#4a525d"/>
+  <rect x="25" y="14" width="6" height="3" rx="1" fill="#6c757d"/>
+  <circle x="46" y="19" r="2" cx="46" cy="19" fill="#f4623a"/>
+  <!-- Camera Body -->
+  <rect x="10" y="21" width="44" height="29" rx="5" fill="#20242a" stroke="#495057" stroke-width="1.2"/>
+  <!-- Right Grip Texture -->
+  <path d="M47 24h4c1.1 0 2 .9 2 2v19c0 1.1-.9 2-2 2h-4V24z" fill="#181b1f"/>
+  <line x1="49" y1="28" x2="49" y2="43" stroke="#2c323b" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Lens Outer Ring -->
+  <circle cx="28" cy="35" r="14" fill="url(#lensGrad)" stroke="#525b67" stroke-width="1.2"/>
+  <circle cx="28" cy="35" r="11" fill="#14171a" stroke="url(#accentOrange)" stroke-width="1.5"/>
+  <!-- Lens Element Reflection -->
+  <circle cx="28" cy="35" r="7" fill="#0d1013"/>
+  <path d="M24 31a5 5 0 0 1 7-1" stroke="#60a5fa" stroke-width="1.4" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="30" cy="33" r="1.5" fill="#ffffff" opacity="0.9"/>
+  <!-- Red Recording Lamp / Alpha Mount Accent -->
+  <circle cx="16" cy="27" r="1.8" fill="#ef4444"/>
+</svg>

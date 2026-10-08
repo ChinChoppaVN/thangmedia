@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="lensBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2e35"/>
+      <stop offset="100%" stop-color="#15181c"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="64" height="64" rx="14" fill="url(#lensBgGrad)" stroke="#3a4049" stroke-width="1.5"/>
+
+  <!-- Lens Mount / Rear Cap (Left) -->
+  <rect x="14" y="24" width="5" height="16" rx="1.5" fill="#475569" stroke="#334155" stroke-width="1"/>
+
+  <!-- Main Barrel Segments -->
+  <rect x="19" y="20" width="10" height="24" fill="#1e242b" stroke="#475569" stroke-width="1"/>
+  <rect x="29" y="18" width="12" height="28" fill="#252c35" stroke="#475569" stroke-width="1"/>
+  <rect x="41" y="16" width="9" height="32" rx="2" fill="#1e242b" stroke="#475569" stroke-width="1"/>
+
+  <!-- Cine Focus Gear Teeth (Follow Focus Ring) -->
+  <line x1="31" y1="21" x2="31" y2="43" stroke="#f4623a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="34" y1="21" x2="34" y2="43" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="37" y1="21" x2="37" y2="43" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Aperture / Red Ring Accent (Cinema Line Red / G-Master Orange) -->
+  <rect x="40.5" y="17" width="2" height="30" fill="#f4623a"/>
+
+  <!-- Front Lens Element / Glass Reflection -->
+  <ellipse cx="49" cy="32" rx="3" ry="14" fill="url(#glassGrad)" stroke="#64748b" stroke-width="1"/>
+  <path d="M48 24a12 12 0 0 1 1 12" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="49" cy="30" r="1.5" fill="#ffffff" opacity="0.9"/>
+</svg>

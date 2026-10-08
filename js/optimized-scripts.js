@@ -45,6 +45,51 @@ const lazyLoadImages = () => {
     images.forEach(img => imageObserver.observe(img));
 };
 
+const getYouTubeVideoId = (url) => {
+    try {
+        const parsed = new URL(url);
+        const host = parsed.hostname.replace(/^www\./, '');
+
+        if (host === 'youtu.be') {
+            return parsed.pathname.slice(1).split('/')[0] || null;
+        }
+
+        if (host.includes('youtube.com') || host.includes('youtube-nocookie.com')) {
+            if (parsed.pathname.startsWith('/embed/')) {
+                return parsed.pathname.split('/embed/')[1]?.split('/')[0]?.split('?')[0] || null;
+            }
+            if (parsed.pathname === '/watch') {
+                return parsed.searchParams.get('v');
+            }
+            if (parsed.pathname.startsWith('/shorts/')) {
+                return parsed.pathname.split('/shorts/')[1]?.split('/')[0] || null;
+            }
+        }
+    } catch {
+        return null;
+    }
+
+    return null;
+};
+
+const buildEmbedUrl = (url) => {
+    const videoId = getYouTubeVideoId(url);
+    if (!videoId) return url;
+
+    const params = new URLSearchParams({
+        autoplay: '1',
+        rel: '0',
+        modestbranding: '1',
+        playsinline: '1',
+    });
+
+    if (window.location.origin && window.location.protocol.startsWith('http')) {
+        params.set('origin', window.location.origin);
+    }
+
+    return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+};
+
 // Enhanced video modal with better performance
 const videoModal = {
     init() {
@@ -72,51 +117,37 @@ const videoModal = {
     open(videoUrl, title) {
         if (!this.modal || !this.iframe) return;
         this.scrollY = window.scrollY || window.pageYOffset || 0;
-        
-        this.iframe.src = videoUrl;
+
+        this.iframe.src = buildEmbedUrl(videoUrl);
         document.getElementById('videoModalLabel').textContent = title;
-        
+
         const modal = bootstrap.Modal.getOrCreateInstance(this.modal, {
             backdrop: true,
             keyboard: true,
             focus: false
         });
         modal.show();
-        
-        this.lockScroll();
     },
-    
+
     close() {
         const modal = bootstrap.Modal.getInstance(this.modal);
         if (modal) modal.hide();
     },
-    
-    lockScroll() {
-        if (!Number.isFinite(this.scrollY)) this.scrollY = 0;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${this.scrollY}px`;
-        document.body.style.width = '100%';
-    },
-    
-    unlockScroll() {
-        const topStr = document.body.style.top || '';
-        const parsedTop = parseInt(topStr, 10);
-        const restoreY = Number.isFinite(parsedTop) ? Math.abs(parsedTop) : (Number.isFinite(this.scrollY) ? this.scrollY : 0);
 
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-
+    restoreScrollPosition() {
+        const restoreY = Number.isFinite(this.scrollY) ? this.scrollY : 0;
         const htmlEl = document.documentElement;
         const prevBehavior = htmlEl.style.scrollBehavior;
         htmlEl.style.scrollBehavior = 'auto';
-        window.scrollTo(0, restoreY);
-        htmlEl.style.scrollBehavior = prevBehavior || '';
+        requestAnimationFrame(() => {
+            window.scrollTo(0, restoreY);
+            htmlEl.style.scrollBehavior = prevBehavior;
+        });
     },
-    
+
     cleanup() {
         if (this.iframe) this.iframe.src = '';
-        this.unlockScroll();
+        this.restoreScrollPosition();
     }
 };
 
@@ -126,15 +157,37 @@ const smoothScroll = () => {
     
     links.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href === 'javascript:void(0)') return;
+            
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } catch {
+                // Ignore invalid selectors safely
             }
         });
+    });
+};
+
+// Event delegation for video modals
+const initVideoTriggers = () => {
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.video-trigger, [data-video-url]');
+        if (trigger) {
+            e.preventDefault();
+            const url = trigger.getAttribute('data-video-url');
+            const title = trigger.getAttribute('data-video-title') || 'Video';
+            if (url) {
+                videoModal.open(url, title);
+            }
+        }
     });
 };
 
@@ -164,14 +217,24 @@ const addFadeAnimations = () => {
     elements.forEach(el => observer.observe(el));
 };
 
+// Update copyright year
+const updateCopyrightYear = () => {
+    const el = document.getElementById('currentYear');
+    if (el) {
+        el.textContent = new Date().getFullYear();
+    }
+};
+
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     navbarShrink();
     initScrollSpy();
 
     videoModal.init();
+    initVideoTriggers();
     smoothScroll();
     addFadeAnimations();
+    updateCopyrightYear();
 
     window.addEventListener('scroll', optimizedScroll());
     

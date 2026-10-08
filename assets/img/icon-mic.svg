@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="micGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2e35"/>
+      <stop offset="100%" stop-color="#15181c"/>
+    </linearGradient>
+    <linearGradient id="bodyMicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d444d"/>
+      <stop offset="100%" stop-color="#1f2328"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="64" height="64" rx="14" fill="url(#micGrad)" stroke="#3a4049" stroke-width="1.5"/>
+
+  <!-- Wireless Mic Body (Square Form Factor: Rode Wireless PRO / DJI Mic) -->
+  <rect x="18" y="15" width="28" height="34" rx="6" fill="url(#bodyMicGrad)" stroke="#4b5563" stroke-width="1.2"/>
+  
+  <!-- Built-in Capsule Grille at Top -->
+  <rect x="23" y="18" width="18" height="4" rx="2" fill="#111827"/>
+  <circle cx="26" cy="20" r="0.8" fill="#9ca3af"/>
+  <circle cx="29" cy="20" r="0.8" fill="#9ca3af"/>
+  <circle cx="32" cy="20" r="0.8" fill="#9ca3af"/>
+  <circle cx="35" cy="20" r="0.8" fill="#9ca3af"/>
+  <circle cx="38" cy="20" r="0.8" fill="#9ca3af"/>
+
+  <!-- OLED Display Screen -->
+  <rect x="22" y="26" width="20" height="13" rx="2" fill="#090d12" stroke="#1f2937" stroke-width="0.8"/>
+  
+  <!-- Audio Waveform Visualizer on Screen -->
+  <line x1="25" y1="33" x2="25" y2="35" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="28" y1="30" x2="28" y2="36" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="31" y1="28" x2="31" y2="37" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="34" y1="31" x2="34" y2="35" stroke="#f4623a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="37" y1="29" x2="37" y2="36" stroke="#f4623a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="40" y1="32" x2="40" y2="34" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Status / Pairing LED -->
+  <circle cx="25" cy="44" r="1.5" fill="#3b82f6"/>
+  <circle cx="39" cy="44" r="1.5" fill="#f4623a"/>
+
+  <!-- Wireless Signal Waves Broadcast (Top) -->
+  <path d="M14 22a22 22 0 0 1 0-8" stroke="#f4623a" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+  <path d="M50 14a22 22 0 0 1 0 8" stroke="#f4623a" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+</svg>

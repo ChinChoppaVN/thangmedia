@@ -3,13 +3,31 @@
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="description" content="Thắng Media - Dịch vụ quay phim, chụp ảnh, thiết kế đồ họa và sản xuất video chuyên nghiệp" />
         <meta name="author" content="Thắng Media" />
         <title>Thắng Media - Creative Media Solutions</title>
-        <link rel="icon" type="image/x-icon" href="assets/CH vuông.ico" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" />
+        <link rel="canonical" href="https://thangmedia.site/" />
+        <link rel="icon" type="image/x-icon" href="assets/CH vuong.ico" />
+
+        <!-- Open Graph / Facebook / Zalo -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://thangmedia.site/" />
+        <meta property="og:title" content="Thắng Media - Creative Media Solutions" />
+        <meta property="og:description" content="Thắng Media - Dịch vụ quay phim, chụp ảnh, thiết kế đồ họa và sản xuất video chuyên nghiệp" />
+        <meta property="og:image" content="https://thangmedia.site/assets/img/portfolio/thumbnails/1.jpg" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://thangmedia.site/" />
+        <meta name="twitter:title" content="Thắng Media - Creative Media Solutions" />
+        <meta name="twitter:description" content="Thắng Media - Dịch vụ quay phim, chụp ảnh, thiết kế đồ họa và sản xuất video chuyên nghiệp" />
+        <meta name="twitter:image" content="https://thangmedia.site/assets/img/portfolio/thumbnails/1.jpg" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/custom-styles.css" rel="stylesheet" />
 </head>
@@ -109,6 +127,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row gx-4 gx-lg-5 justify-content-center mt-5">
+                    <div class="col-lg-10 text-center">
+                        <h4 class="text-muted mb-4">Thiết bị tác nghiệp chuyên dụng</h4>
+                        <div class="software-icons d-flex justify-content-center flex-wrap">
+                            <img src="assets/img/icon-camera.svg" alt="Máy quay" class="software-icon" title="Máy quay chuyên dụng" loading="lazy">
+                            <img src="assets/img/icon-gimbal.svg" alt="Gimbal" class="software-icon" title="Gimbal chống rung" loading="lazy">
+                            <img src="assets/img/icon-flycam.svg" alt="Flycam" class="software-icon" title="Flycam / Drone" loading="lazy">
+                            <img src="assets/img/icon-mic.svg" alt="Microphone" class="software-icon" title="Microphone thu âm" loading="lazy">
+                            <img src="assets/img/icon-lighting.svg" alt="Ánh sáng" class="software-icon" title="Đèn & Ánh sáng studio" loading="lazy">
+                            <img src="assets/img/icon-lens.svg" alt="Ống kính" class="software-icon" title="Ống kính chuyên dụng" loading="lazy">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- Portfolio Video-->
@@ -120,8 +152,12 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://www.youtube.com/embed/atqfmt2F6z8?si=YTbU5IV5zzzQyuB1', 'TVC'); return false;" title="TVC">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/1.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TVC" />
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://www.youtube.com/embed/atqfmt2F6z8?si=YTbU5IV5zzzQyuB1" data-video-title="TVC" title="TVC" role="button" aria-label="Xem video TVC">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="TVC" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-film"></i>
+                                <div class="fw-bold text-white">TVC Quảng cáo</div>
+                            </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Quảng cáo</div>
                                 <div class="project-name">TVC</div>
@@ -132,8 +168,12 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://www.youtube.com/embed/B9jcYIj5DVE?si=zTTh6M4X_LzI0du0', 'Quảng bá du lịch'); return false;" title="Quảng bá du lịch">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/2.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Quảng bá du lịch" />
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://www.youtube.com/embed/B9jcYIj5DVE?si=zTTh6M4X_LzI0du0" data-video-title="Quảng bá du lịch" title="Quảng bá du lịch" role="button" aria-label="Xem video Quảng bá du lịch">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="Quảng bá du lịch" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-compass"></i>
+                                <div class="fw-bold text-white">Quảng bá du lịch</div>
+                            </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Du lịch</div>
                                 <div class="project-name">Quảng bá du lịch</div>
@@ -144,8 +184,12 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://www.youtube.com/embed/nqZNLspY-bQ?si=2eHGmf_M-sk4E6rt', 'Giới thiệu phần mềm'); return false;" title="Giới thiệu phần mềm">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/3.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Giới thiệu phần mềm" />
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://www.youtube.com/embed/nqZNLspY-bQ?si=2eHGmf_M-sk4E6rt" data-video-title="Giới thiệu phần mềm" title="Giới thiệu phần mềm" role="button" aria-label="Xem video Giới thiệu phần mềm">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="Giới thiệu phần mềm" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-laptop"></i>
+                                <div class="fw-bold text-white">Giới thiệu phần mềm</div>
+                            </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Software</div>
                                 <div class="project-name">Giới thiệu phần mềm</div>
@@ -156,8 +200,12 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://www.youtube.com/embed/kaUCmobQxyg?si=rRXmTZEPnASugAP8', 'Ẩm thực & Nhà hàng'); return false;" title="Ẩm thực & Nhà hàng">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/4.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Ẩm thực & Nhà hàng" />
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://www.youtube.com/embed/kaUCmobQxyg?si=rRXmTZEPnASugAP8" data-video-title="Ẩm thực & Nhà hàng" title="Ẩm thực & Nhà hàng" role="button" aria-label="Xem video Ẩm thực & Nhà hàng">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="Ẩm thực & Nhà hàng" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-cup-hot"></i>
+                                <div class="fw-bold text-white">Ẩm thực & Nhà hàng</div>
+                            </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">F&B</div>
                                 <div class="project-name">Ẩm thực & Nhà hàng</div>
@@ -168,8 +216,12 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://thangmupmip-my.sharepoint.com/personal/data_thangmedia_xyz/_layouts/15/embed.aspx?UniqueId=32a645f0-d4be-4855-b861-e93265544e5a&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create', 'Sản phẩm'); return false;" title="Sản phẩm">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/5.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sản phẩm" />
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://thangmupmip-my.sharepoint.com/personal/data_thangmedia_xyz/_layouts/15/embed.aspx?UniqueId=32a645f0-d4be-4855-b861-e93265544e5a&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" data-video-title="Sản phẩm" title="Sản phẩm" role="button" aria-label="Xem video Sản phẩm">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="Sản phẩm" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-box-seam"></i>
+                                <div class="fw-bold text-white">Video Sản phẩm</div>
+                            </div>
                             <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Product</div>
                                 <div class="project-name">Sản phẩm</div>
@@ -180,9 +232,13 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="javascript:void(0)" onclick="openVideoModal('https://www.youtube.com/embed/atqfmt2F6z8?si=YTbU5IV5zzzQyuB1', 'Thời trang & Mỹ phẩm'); return false;" title="Thời trang & Mỹ phẩm">
-                            <img class="img-fluid lazy" data-src="assets/img/portfolio/thumbnails/6.jpg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Thời trang & Mỹ phẩm" />
-                            <div class="portfolio-box-caption p-3">
+                        <a class="portfolio-box video-trigger" href="javascript:void(0)" data-video-url="https://www.youtube.com/embed/atqfmt2F6z8?si=YTbU5IV5zzzQyuB1" data-video-title="Thời trang & Mỹ phẩm" title="Thời trang & Mỹ phẩm" role="button" aria-label="Xem video Thời trang & Mỹ phẩm">
+                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="Thời trang & Mỹ phẩm" loading="lazy" />
+                            <div class="portfolio-box-video-overlay">
+                                <i class="bi-gem"></i>
+                                <div class="fw-bold text-white">Thời trang & Mỹ phẩm</div>
+                            </div>
+                            <div class="portfolio-box-caption">
                                 <div class="project-category text-white-50">Fashion</div>
                                 <div class="project-name">Thời trang & Mỹ phẩm</div>
                                 <div class="project-description text-white-50 mt-2">
@@ -205,59 +261,104 @@
                 <div class="row g-0">
                     <div class="col-lg-4 col-sm-6">
                         <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-palette"></i>
+                                <div class="fw-bold text-white">Branding & Identity</div>
+                                <div class="placeholder-badge"><i class="bi-clock-history me-1"></i>Đang cập nhật</div>
+                            </div>
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                                <div class="project-category text-white-50">Thiết kế</div>
+                                <div class="project-name">Nhận diện thương hiệu</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-clock-history"></i> Đang cập nhật
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-image"></i>
+                                <div class="fw-bold text-white">Key Visual & Banner</div>
+                                <div class="placeholder-badge"><i class="bi-clock-history me-1"></i>Đang cập nhật</div>
+                            </div>
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                                <div class="project-category text-white-50">Truyền thông</div>
+                                <div class="project-name">Ấn phẩm sự kiện & Digital</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-clock-history"></i> Đang cập nhật
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-collection-play"></i>
+                                <div class="fw-bold text-white">Social Media</div>
+                                <div class="placeholder-badge"><i class="bi-clock-history me-1"></i>Đang cập nhật</div>
+                            </div>
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                                <div class="project-category text-white-50">Mạng xã hội</div>
+                                <div class="project-name">Thumbnail & Poster Digital</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-clock-history"></i> Đang cập nhật
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-box-seam"></i>
+                                <div class="fw-bold text-white">Bao bì & Nhãn mác</div>
+                                <div class="placeholder-badge"><i class="bi-clock-history me-1"></i>Đang cập nhật</div>
+                            </div>
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                                <div class="project-category text-white-50">Sản phẩm</div>
+                                <div class="project-name">Packaging & Label Design</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-clock-history"></i> Đang cập nhật
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                        <a class="portfolio-box text-decoration-none" href="https://sodulich.hanoi.gov.vn/magazine/ban-tin-du-lich-ha-noi-so-2-2026" target="_blank" rel="noopener noreferrer" title="Bản tin Du lịch Hà Nội số 2/2026">
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-book"></i>
+                                <div class="fw-bold text-white">Bản tin Du lịch Hà Nội</div>
+                                <div class="placeholder-badge"><i class="bi-box-arrow-up-right me-1"></i>Số 2/2026</div>
                             </div>
-                        </div>
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Ấn phẩm in ấn</div>
+                                <div class="project-name">Bản tin Du lịch Hà Nội (Số 2/2026)</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-box-arrow-up-right"></i> Xem trực tuyến
+                                </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="portfolio-box">
-                            <div class="portfolio-box-placeholder"></div>
+                            <div class="portfolio-box-placeholder">
+                                <i class="bi-vector-pen"></i>
+                                <div class="fw-bold text-white">Typography & Graphic</div>
+                                <div class="placeholder-badge"><i class="bi-clock-history me-1"></i>Đang cập nhật</div>
+                            </div>
                             <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50"></div>
-                                <div class="project-name"></div>
+                                <div class="project-category text-white-50">Đồ họa</div>
+                                <div class="project-name">Minh họa & Sáng tạo nội dung</div>
+                                <div class="project-description text-white-50 mt-2">
+                                    <i class="bi-clock-history"></i> Đang cập nhật
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="container text-center py-4">
+                <p class="text-muted small mb-0"><i class="bi-info-circle me-1"></i> Các dự án thiết kế mới đang được cập nhật. Quý khách hàng cần tham khảo portfolio thiết kế xin vui lòng liên hệ trực tiếp.</p>
             </div>
         </div>
 
@@ -271,7 +372,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="ratio ratio-16x9 video-modal">
-                            <iframe id="videoIframe" src="" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe id="videoIframe" src="" title="YouTube video" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -293,21 +394,21 @@
                             <div class="col-lg-4 text-center mb-4 mb-lg-0">
                                 <i class="bi-phone fs-2 mb-3 text-primary"></i>
                                 <div class="fw-bold">
-                                    <a href="https://zalo.me/0931503305" target="_blank" class="text-decoration-none">0931.503.305</a>
+                                    <a href="https://zalo.me/0931503305" target="_blank" rel="noopener noreferrer" class="text-decoration-none">0931.503.305</a>
                                 </div>
                                 <div class="text-muted">SĐT/Zalo</div>
                             </div>
                             <div class="col-lg-4 text-center mb-4 mb-lg-0">
                                 <i class="bi-envelope fs-2 mb-3 text-primary"></i>
                                 <div class="fw-bold">
-                                    <a href="mailto:contact@thangmedia.xyz" class="text-decoration-none">contact@thangmedia.xyz</a>
+                                    <a href="mailto:contact@thangmedia.site" class="text-decoration-none">contact@thangmedia.site</a>
                                 </div>
                                 <div class="text-muted">Email</div>
                             </div>
                             <div class="col-lg-4 text-center mb-4 mb-lg-0">
                                 <i class="bi-facebook fs-2 mb-3 text-primary"></i>
                                 <div class="fw-bold">
-                                    <a href="https://www.facebook.com/thangmupmip" target="_blank" class="text-decoration-none">@thangmupmip</a>
+                                    <a href="https://www.facebook.com/thangmupmip" target="_blank" rel="noopener noreferrer" class="text-decoration-none">@thangmupmip</a>
                                 </div>
                                 <div class="text-muted">Facebook</div>
                             </div>
@@ -319,9 +420,16 @@
         <!-- Footer-->
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5">
-                <div class="small text-center text-muted">Copyright &copy; 2025 - Thắng Media</div>
+                <div class="small text-center text-muted">Copyright &copy; <span id="currentYear">2026</span> - Thắng Media</div>
             </div>
         </footer>
+
+        <!-- Floating Quick Contact (Zalo) -->
+        <a href="https://zalo.me/0931503305" target="_blank" rel="noopener noreferrer" class="floating-contact-btn" title="Liên hệ Zalo nhanh" aria-label="Liên hệ Zalo 0931.503.305">
+            <i class="bi bi-chat-dots-fill"></i>
+            <span>Chat Zalo</span>
+        </a>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/optimized-scripts.js"></script>
 </body>

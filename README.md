@@ -1,84 +1,60 @@
-# Social Media Downloader v2.0
+# 🎬 Thắng Media - Creative Media Solutions
 
-![Logo](assets/CH.ico)
+Trang portfolio chính thức của **Thắng Media** ([thangmedia.site](https://thangmedia.site)) giới thiệu các dịch vụ và dự án chuyên nghiệp: Quay phim, Chụp ảnh, Sản xuất video quảng cáo (TVC) và Thiết kế đồ họa.
 
-## Giới thiệu
+---
 
-**Social Media Downloader** là ứng dụng miễn phí giúp bạn tải video và âm thanh từ các nền tảng phổ biến như **YouTube, TikTok, Vimeo, SoundCloud**... với giao diện hiện đại, dễ dùng, tối ưu cho người dùng cuối. Ứng dụng phù hợp để lưu trữ nội dung yêu thích, học tập, giải trí offline.
+## 🌟 Tính năng chính
 
-## Tính năng nổi bật
+- **Giao diện hiện đại & Responsive**: Tương thích hoàn hảo trên máy tính để bàn, tablet và smartphone.
+- **Trình chiếu Video Modal**: Tích hợp xem trực tiếp các dự án video chất lượng cao từ YouTube với `youtube-nocookie.com`.
+- **Hồ sơ năng lực & Kỹ năng toàn diện**:
+  - Trực quan hóa hệ thống phần mềm hậu kỳ (Premiere, After Effects, DaVinci Resolve, Photoshop...).
+  - Trực quan hóa thiết bị tác nghiệp (Máy quay, Gimbal, Flycam, Audio, Ánh sáng) bằng hệ thống icon hiện đại.
+- **Tối ưu hóa hiệu năng**:
+  - Tải ảnh nền Hero và thumbnails tối ưu hóa dung lượng.
+  - Native Lazy Loading cho hình ảnh, giảm băng thông tải trang.
+  - Hỗ trợ cuộn mượt (Smooth Scrolling) với cơ chế bảo vệ vị trí trang khi mở/đóng modal.
+- **Tương tác chạm thông minh (Mobile First)**: Hiển thị thông tin danh mục và tiêu đề dự án rõ ràng trên thiết bị di động không hỗ trợ hover.
 
-- **Giao diện dạng tab hiện đại**:
-  - Tab 1: Tải video/âm thanh từng link
-  - Tab 2: Tải playlist (danh sách phát) hàng loạt
-- **Hỗ trợ nhiều nền tảng**:
-  - YouTube
-  - TikTok
-  - Vimeo
-  - SoundCloud
-- **Tải video hoặc audio chất lượng cao** (MP4, MP3)
-- **Tải toàn bộ playlist YouTube** chỉ với 1 click, tự động đặt tên file hợp lý, hiển thị tiến trình từng video
-- **Lưu lịch sử tải chi tiết**: Xem lại, tìm kiếm, mở file/thư mục, xóa từng mục hoặc toàn bộ
-- **Popup hoàn thành tải xuống thông minh**:
-  - 3 lựa chọn: Mở file, Mở thư mục, Đóng
-  - Tùy chọn "Không hỏi lại" để tự động thực hiện hành động yêu thích lần sau
-- **Cảnh báo thân thiện, rõ ràng** khi gặp lỗi bản quyền, DRM, hoặc link không hợp lệ
-- **Tùy chỉnh giao diện (Tối/Sáng/Hệ thống), ngôn ngữ (Tiếng Việt/English), thông báo**
-- **Tự động nhận diện link playlist/video, nhắc nhở chuyển tab phù hợp**
+---
 
-## Yêu cầu hệ thống
+## 📁 Cấu trúc thư mục
 
-- Windows 7/8/10/11 (64-bit)
-- ~100MB dung lượng ổ đĩa trống
-- Kết nối Internet
+```text
+home-thangmedia/
+├── assets/
+│   ├── CH vuong.ico              # Favicon website
+│   └── img/
+│       ├── bg-masthead.png       # Ảnh nền Hero Masthead
+│       ├── icon-*.png            # Biểu tượng phần mềm chuyên dụng
+│       ├── icon-*.svg            # Biểu tượng thiết bị tác nghiệp (Camera, Gimbal, Flycam...)
+│       └── portfolio/
+│           └── thumbnails/       # Ảnh đại diện các video portfolio
+├── css/
+│   ├── styles.css                # Base Bootstrap CSS & theme framework
+│   └── custom-styles.css         # CSS tùy biến & tối ưu hóa hiển thị
+├── js/
+│   └── optimized-scripts.js      # Script xử lý sự kiện, modal video & scroll
+├── CNAME                         # Cấu hình domain thangmedia.site (GitHub Pages)
+├── .nojekyll                     # Tắt trình xử lý Jekyll cho GitHub Pages
+├── index.html                    # Trang đích chính
+└── README.md                     # Tài liệu dự án
+```
 
-## Cài đặt
+---
 
-1. Tải file cài đặt từ trang phát hành
-2. Chạy file "SocialMediaDownloader_Setup.exe"
-3. Làm theo hướng dẫn trên màn hình
-4. Ứng dụng sẽ tự tạo biểu tượng trên Desktop và Start Menu
+## 🚀 Triển khai & Chạy cục bộ
 
-## Hướng dẫn sử dụng nhanh
+1. **Xem trực tiếp**: Khởi chạy với bất kỳ static server nào (ví dụ: Live Server trong VS Code, `npx serve`, hoặc mở trực tiếp `index.html` trong trình duyệt).
+2. **Hosting**: Triển khai tự động thông qua **GitHub Pages** với domain tùy chỉnh cấu hình trong file `CNAME`.
 
-### Tải video hoặc audio từng link
-1. Chọn **tab "Tải video/audio"**
-2. Dán link video vào ô "Link video"
-3. Chọn định dạng (MP4 hoặc MP3)
-4. Chọn thư mục lưu, đặt tên file (tùy chọn)
-5. Nhấn **"Tải ngay"** và chờ hoàn tất
-6. Khi popup hiện ra, chọn mở file, mở thư mục hoặc đóng
+---
 
-### Tải playlist (danh sách phát)
-1. Chọn **tab "Tải playlist"**
-2. Dán link playlist YouTube vào ô "Link playlist"
-3. Chọn định dạng (MP4 hoặc MP3)
-4. Chọn thư mục lưu
-5. Nhấn **"Tải ngay"**
-6. Xác nhận số lượng video, theo dõi tiến trình từng file
-7. Khi hoàn thành, popup sẽ cho phép mở file cuối cùng tải thành công hoặc mở thư mục
+## 📞 Liên hệ
 
-### Quản lý lịch sử tải
-- Nhấn **"Lịch sử tải"** trên menubar
-- Xem, tìm kiếm, mở file/thư mục, xóa mục đã chọn hoặc toàn bộ
+- **Hotline / Zalo**: [0931.503.305](https://zalo.me/0931503305)
+- **Email**: [contact@thangmedia.site](mailto:contact@thangmedia.site)
+- **Facebook**: [Thắng Múp Míp](https://www.facebook.com/thangmupmip)
 
-## Lưu ý & Giải đáp nhanh
-
-- **Không tải được video?**
-  - Kiểm tra link hợp lệ, video không bị giới hạn bản quyền/riêng tư
-  - Một số video có DRM hoặc bị chặn, app sẽ cảnh báo rõ ràng
-- **Không tải được playlist?**
-  - Đảm bảo link đúng định dạng playlist YouTube
-  - Nếu dán nhầm link playlist vào tab video/audio, app sẽ nhắc bạn chuyển tab
-- **Lỗi "Không thể tải video này. Hãy thử lại sau!"**
-  - Do chính sách YouTube/DRM, không phải lỗi app
-- **Lỗi quyền truy cập/thư mục**
-  - Thử chọn thư mục khác hoặc chạy app với quyền admin
-
-## Liên hệ & Hỗ trợ
-- Email: quyetthang.media@gmail.com
-
-**Lưu ý:** Ứng dụng chỉ dành cho mục đích cá nhân. Vui lòng tuân thủ điều khoản dịch vụ của các nền tảng và tôn trọng bản quyền nội dung.
-
-## Tác giả
-- **Thắng MupMip** - [GitHub](https://github.com/ChinChoppaVN) 
+&copy; 2026 Thắng Media. All rights reserved.
