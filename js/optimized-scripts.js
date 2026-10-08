@@ -1,50 +1,9 @@
-/* Optimized Scripts for Thắng Media */
+/* ==========================================================================
+   Thắng Media - Modern Minimalist Scripts
+   Video Modal • Filterable Projects • Smooth Interactions
+   ========================================================================== */
 
-// Performance optimization: Use requestAnimationFrame for smooth animations
-const optimizedScroll = () => {
-    let ticking = false;
-    
-    return () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                navbarShrink();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    };
-};
-
-// Enhanced navbar functionality
-const navbarShrink = () => {
-    const navbar = document.querySelector('#mainNav');
-    if (!navbar) return;
-    
-    if (window.scrollY === 0) {
-        navbar.classList.remove('navbar-shrink');
-    } else {
-        navbar.classList.add('navbar-shrink');
-    }
-};
-
-// Lazy loading for images
-const lazyLoadImages = () => {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-};
-
+// 1. YouTube Embed URL Builder
 const getYouTubeVideoId = (url) => {
     try {
         const parsed = new URL(url);
@@ -68,7 +27,6 @@ const getYouTubeVideoId = (url) => {
     } catch {
         return null;
     }
-
     return null;
 };
 
@@ -90,7 +48,7 @@ const buildEmbedUrl = (url) => {
     return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
 };
 
-// Enhanced video modal with better performance
+// 2. Video Modal Manager
 const videoModal = {
     init() {
         this.modal = document.getElementById('videoModal');
@@ -99,42 +57,42 @@ const videoModal = {
         if (!this.modal || !this.iframe) return;
         this.bindEvents();
     },
-    
+
     bindEvents() {
-        // Close modal on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal && this.modal.classList.contains('show')) {
                 this.close();
             }
         });
-        
-        // Handle modal close
+
         this.modal.addEventListener('hidden.bs.modal', () => {
             this.cleanup();
         });
     },
-    
+
     open(videoUrl, title) {
         if (!this.modal || !this.iframe) return;
         this.scrollY = window.scrollY || window.pageYOffset || 0;
 
         this.iframe.src = buildEmbedUrl(videoUrl);
-        document.getElementById('videoModalLabel').textContent = title;
+        const labelEl = document.getElementById('videoModalLabel');
+        if (labelEl) labelEl.textContent = title;
 
-        const modal = bootstrap.Modal.getOrCreateInstance(this.modal, {
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(this.modal, {
             backdrop: true,
             keyboard: true,
             focus: false
         });
-        modal.show();
+        modalInstance.show();
     },
 
     close() {
-        const modal = bootstrap.Modal.getInstance(this.modal);
-        if (modal) modal.hide();
+        const modalInstance = bootstrap.Modal.getInstance(this.modal);
+        if (modalInstance) modalInstance.hide();
     },
 
-    restoreScrollPosition() {
+    cleanup() {
+        if (this.iframe) this.iframe.src = '';
         const restoreY = Number.isFinite(this.scrollY) ? this.scrollY : 0;
         const htmlEl = document.documentElement;
         const prevBehavior = htmlEl.style.scrollBehavior;
@@ -143,119 +101,107 @@ const videoModal = {
             window.scrollTo(0, restoreY);
             htmlEl.style.scrollBehavior = prevBehavior;
         });
-    },
-
-    cleanup() {
-        if (this.iframe) this.iframe.src = '';
-        this.restoreScrollPosition();
     }
 };
 
-// Smooth scrolling for navigation links
-const smoothScroll = () => {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            if (!href || href === '#' || href === 'javascript:void(0)') return;
-            
-            try {
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+// 3. Projects Category Filter
+const initProjectFilter = () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue || category?.includes(filterValue)) {
+                    card.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
                     });
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 250);
                 }
-            } catch {
-                // Ignore invalid selectors safely
-            }
+            });
         });
     });
 };
 
-// Event delegation for video modals
-const initVideoTriggers = () => {
+// 4. Smooth Scroll Reveal Animation
+const initScrollReveal = () => {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    if (!revealElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+};
+
+// 5. Quick Inquiry Form (Connect directly to Zalo / WhatsApp)
+const initInquiryForm = () => {
+    const form = document.getElementById('quickInquiryForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('clientName')?.value.trim();
+        const phone = document.getElementById('clientPhone')?.value.trim();
+        const service = document.getElementById('clientService')?.value;
+        const note = document.getElementById('clientNote')?.value.trim();
+
+        if (!name || !phone) {
+            alert('Vui lòng nhập tên và số điện thoại / Zalo để chúng tôi hỗ trợ.');
+            return;
+        }
+
+        const message = `Chào Thắng Media, tôi là ${name} (SĐT: ${phone}). Tôi đang quan tâm đến dịch vụ: ${service}. Nội dung: ${note || 'Tư vấn dự án'}`;
+        const zaloUrl = `https://zalo.me/0931503305?text=${encodeURIComponent(message)}`;
+
+        window.open(zaloUrl, '_blank');
+    });
+};
+
+// 6. Global DOM Ready Init
+document.addEventListener('DOMContentLoaded', () => {
+    videoModal.init();
+    initProjectFilter();
+    initScrollReveal();
+    initInquiryForm();
+
+    // Event delegation for video cards
     document.addEventListener('click', (e) => {
         const trigger = e.target.closest('.video-trigger, [data-video-url]');
         if (trigger) {
             e.preventDefault();
             const url = trigger.getAttribute('data-video-url');
-            const title = trigger.getAttribute('data-video-title') || 'Video';
+            const title = trigger.getAttribute('data-video-title') || 'Dự án';
             if (url) {
                 videoModal.open(url, title);
             }
         }
     });
-};
 
-// Bootstrap ScrollSpy
-const initScrollSpy = () => {
-    const mainNav = document.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
-        });
+    // Update current year
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
     }
-};
-
-// Add fade-in animations
-const addFadeAnimations = () => {
-    const elements = document.querySelectorAll('.portfolio-box, .software-icon, .btn');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    elements.forEach(el => observer.observe(el));
-};
-
-// Update copyright year
-const updateCopyrightYear = () => {
-    const el = document.getElementById('currentYear');
-    if (el) {
-        el.textContent = new Date().getFullYear();
-    }
-};
-
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    navbarShrink();
-    initScrollSpy();
-
-    videoModal.init();
-    initVideoTriggers();
-    smoothScroll();
-    addFadeAnimations();
-    updateCopyrightYear();
-
-    window.addEventListener('scroll', optimizedScroll());
-    
-    // Initialize lazy loading
-    lazyLoadImages();
-    
-    // Responsive navbar collapse
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navLinks = document.querySelectorAll('#navbarResponsive .nav-link');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
 });
-
-// Global function for opening video modal (for backward compatibility)
-window.openVideoModal = (videoUrl, title) => {
-    videoModal.open(videoUrl, title);
-};
-
