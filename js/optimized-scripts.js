@@ -155,7 +155,7 @@ const initScrollReveal = () => {
     revealElements.forEach(el => observer.observe(el));
 };
 
-// 5. Quick Inquiry Form (Connect directly to Zalo / WhatsApp)
+// 5. Quick Inquiry Form (Connect directly to Zalo)
 const initInquiryForm = () => {
     const form = document.getElementById('quickInquiryForm');
     if (!form) return;
@@ -168,23 +168,53 @@ const initInquiryForm = () => {
         const note = document.getElementById('clientNote')?.value.trim();
 
         if (!name || !phone) {
-            alert('Vui lòng nhập tên và số điện thoại / Zalo để chúng tôi hỗ trợ.');
+            alert('Vui lòng nhập tên và số điện thoại / Zalo để tôi tiện liên hệ trao đổi.');
             return;
         }
 
-        const message = `Chào Thắng Media, tôi là ${name} (SĐT: ${phone}). Tôi đang quan tâm đến dịch vụ: ${service}. Nội dung: ${note || 'Tư vấn dự án'}`;
+        const message = `Chào Thắng, tôi là ${name} (SĐT: ${phone}). Tôi muốn trao đổi về: ${service}. Nội dung: ${note || 'Tư vấn dự án'}`;
         const zaloUrl = `https://zalo.me/0931503305?text=${encodeURIComponent(message)}`;
 
         window.open(zaloUrl, '_blank');
     });
 };
 
-// 6. Global DOM Ready Init
+// 6. Active Nav Link Scroll Spy
+const initScrollSpy = () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link-item');
+    if (!sections.length || !navLinks.length) return;
+
+    window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 140;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        if (currentSectionId) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    }, { passive: true });
+};
+
+// 7. Global DOM Ready Init
 document.addEventListener('DOMContentLoaded', () => {
     videoModal.init();
     initProjectFilter();
     initScrollReveal();
     initInquiryForm();
+    initScrollSpy();
 
     // Event delegation for video cards
     document.addEventListener('click', (e) => {
