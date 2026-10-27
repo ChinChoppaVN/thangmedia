@@ -262,6 +262,29 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-minimal-gold {
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+  color: #0f1218 !important;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: var(--transition);
+  border: 1px solid #facc15;
+  box-shadow: 0 4px 18px rgba(234, 179, 8, 0.25);
+}
+
+.btn-minimal-gold:hover {
+  background: linear-gradient(135deg, #facc15, #eab308);
+  color: #000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 179, 8, 0.45);
+}
+
 /* Quick Metrics Row */
 .hero-metrics {
   display: grid;
