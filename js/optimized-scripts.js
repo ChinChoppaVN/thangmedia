@@ -104,7 +104,66 @@ const videoModal = {
     }
 };
 
-// 3. Projects Category Filter
+// 3. Flipbook Modal Manager
+const flipbookModal = {
+    init() {
+        this.modal = document.getElementById('flipbookModal');
+        this.iframe = document.getElementById('flipbookIframe');
+        this.scrollY = 0;
+        if (!this.modal || !this.iframe) return;
+        this.bindEvents();
+    },
+
+    bindEvents() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal && this.modal.classList.contains('show')) {
+                this.close();
+            }
+        });
+
+        this.modal.addEventListener('hidden.bs.modal', () => {
+            this.cleanup();
+        });
+    },
+
+    open(flipbookUrl, title) {
+        if (!this.modal || !this.iframe) return;
+        this.scrollY = window.scrollY || window.pageYOffset || 0;
+
+        this.iframe.src = flipbookUrl;
+        const labelEl = document.getElementById('flipbookModalLabel');
+        if (labelEl) labelEl.textContent = title;
+
+        const directLinkEl = document.getElementById('flipbookDirectLink');
+        if (directLinkEl) directLinkEl.href = flipbookUrl;
+
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(this.modal, {
+            backdrop: true,
+            keyboard: true,
+            focus: false
+        });
+        modalInstance.show();
+    },
+
+    close() {
+        const modalInstance = bootstrap.Modal.getInstance(this.modal);
+        if (modalInstance) modalInstance.hide();
+    },
+
+    cleanup() {
+        if (this.iframe) this.iframe.src = '';
+        const restoreY = Number.isFinite(this.scrollY) ? this.scrollY : 0;
+        const htmlEl = document.documentElement;
+        const prevBehavior = htmlEl.style.scrollBehavior;
+        htmlEl.style.scrollBehavior = 'auto';
+        requestAnimationFrame(() => {
+            window.scrollTo(0, restoreY);
+            htmlEl.style.scrollBehavior = prevBehavior;
+        });
+    }
+};
+
+// 4. Projects Category Filter
 const initProjectFilter = () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -208,23 +267,35 @@ const initScrollSpy = () => {
     }, { passive: true });
 };
 
-// 7. Global DOM Ready Init
+// 8. Global DOM Ready Init
 document.addEventListener('DOMContentLoaded', () => {
     videoModal.init();
+    flipbookModal.init();
     initProjectFilter();
     initScrollReveal();
     initInquiryForm();
     initScrollSpy();
 
-    // Event delegation for video cards
+    // Event delegation for video and flipbook triggers
     document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('.video-trigger, [data-video-url]');
-        if (trigger) {
+        const videoTrigger = e.target.closest('.video-trigger, [data-video-url]');
+        if (videoTrigger) {
             e.preventDefault();
-            const url = trigger.getAttribute('data-video-url');
-            const title = trigger.getAttribute('data-video-title') || 'Dự án';
+            const url = videoTrigger.getAttribute('data-video-url');
+            const title = videoTrigger.getAttribute('data-video-title') || 'Dự án';
             if (url) {
                 videoModal.open(url, title);
+            }
+            return;
+        }
+
+        const flipbookTrigger = e.target.closest('.flipbook-trigger, [data-flipbook-url]');
+        if (flipbookTrigger) {
+            e.preventDefault();
+            const url = flipbookTrigger.getAttribute('data-flipbook-url');
+            const title = flipbookTrigger.getAttribute('data-flipbook-title') || 'Tạp chí';
+            if (url) {
+                flipbookModal.open(url, title);
             }
         }
     });
