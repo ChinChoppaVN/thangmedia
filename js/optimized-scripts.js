@@ -32,20 +32,30 @@ const getYouTubeVideoId = (url) => {
 
 const buildEmbedUrl = (url) => {
     const videoId = getYouTubeVideoId(url);
-    if (!videoId) return url;
+    if (videoId) {
+        const params = new URLSearchParams({
+            autoplay: '1',
+            rel: '0',
+            modestbranding: '1',
+            playsinline: '1',
+        });
 
-    const params = new URLSearchParams({
-        autoplay: '1',
-        rel: '0',
-        modestbranding: '1',
-        playsinline: '1',
-    });
+        if (window.location.origin && window.location.protocol.startsWith('http')) {
+            params.set('origin', window.location.origin);
+        }
 
-    if (window.location.origin && window.location.protocol.startsWith('http')) {
-        params.set('origin', window.location.origin);
+        return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
     }
 
-    return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+    // Facebook Video Embed Handler
+    if (url.includes('facebook.com') || url.includes('fb.watch')) {
+        if (url.includes('/plugins/video.php')) {
+            return url;
+        }
+        return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=true`;
+    }
+
+    return url;
 };
 
 // 2. Video Modal Manager
