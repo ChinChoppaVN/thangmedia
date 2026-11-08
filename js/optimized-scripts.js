@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Thắng Media - Modern Minimalist Scripts
+   Nguyễn Quyết Thắng - Modern Minimalist Scripts
    Video Modal • Filterable Projects • Smooth Interactions
    ========================================================================== */
 
