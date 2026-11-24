@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thangmedia.site/sitemap.xml
+Sitemap: https://pro.thangmedia.site/sitemap.xml

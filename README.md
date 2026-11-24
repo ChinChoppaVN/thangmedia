@@ -1,6 +1,6 @@
 # 🎬 Thắng Media - Creative Media Solutions
 
-Trang portfolio chính thức của **Thắng Media** ([thangmedia.site](https://thangmedia.site)) giới thiệu các dịch vụ và dự án chuyên nghiệp: Quay phim, Chụp ảnh, Sản xuất video quảng cáo (TVC) và Thiết kế đồ họa.
+Trang portfolio chuyên nghiệp của **Nguyễn Quyết Thắng** ([pro.thangmedia.site](https://pro.thangmedia.site)) giới thiệu các dự án và hồ sơ năng lực dành cho Nhà tuyển dụng & Đối tác.
 
 ---
 
